@@ -147,6 +147,78 @@ nav a:hover {
     color: #ffd1e8 !important;
 }
 
+/* 個人檔案卡片容器 */
+.profile-card {
+    max-width: 600px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 193, 227, 0.2); /* 粉色微光陰影 */
+    border: 1px solid rgba(255, 193, 227, 0.3);
+    text-align: center; /* 讓內部的文字內容預設置中 */
+}
+
+.sana-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1rem;
+    border-collapse: collapse;
+    background-color: transparent;
+}
+/* 表格標題 */
+.sana-table th {
+    font-size: 1.5rem;
+    color: #ff4d94;
+    padding: 15px 0;
+    border-bottom: 2px solid #ffdeeb;
+    text-align: center;
+}
+
+/* 表格內容 */
+.sana-table td {
+    padding: 18px 15px;
+    border-bottom: 1px solid #fff0f6;
+    color: #444;
+    text-align: left;  /* 表格內容改回靠左比較專業 */
+}
+
+/* 左側標籤欄 (加粗並改色) */
+.sana-table td.label {
+    font-weight: bold;
+    color: #ff85c2;
+    width: 35%;
+    /* 固定寬度，防止排版偏移 */
+    background-color: #fffafc;
+    /* 給標籤一點淺色背景區分 */
+    border-radius: 8px 0 0 8px;
+}
+
+/* 滑鼠移上去時，該行會輕微變色 */
+.sana-table tr:hover td {
+    background-color: #fffafc;
+    color: #ff4d94;
+    transition: 0.3s;
+}
+
+/* 移除最後一行的底線 */
+.sana-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* 在 HTML 加入一張 class="profile-img" 的圖片 */
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid #ffdeeb;
+    margin: 0 auto 20px;
+    /* 置中且與下方保持距離 */
+    display: block;
+    object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
 /* 時間軸主容器 */
 .timeline {
     margin: 40px auto;
