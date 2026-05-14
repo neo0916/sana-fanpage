@@ -38,20 +38,32 @@ body {
 }
 
 /* 導航欄樣式 */
+/* 導航欄主體 - 維持你的玻璃擬態 */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: rgba(255, 193, 227, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    padding: 1rem 5%;
+    background: rgba(255, 193, 227, 0.2);
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
+    padding: 0.8rem 8%;
     position: sticky;
     top: 0;
     z-index: 1000;
+    transition: all 0.3s ease;
+    /* 建議加這行，讓邊界更清晰 */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* 這裡是電腦版的選單 */
+/* Logo 樣式 */
+.logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .nav-list {
     list-style: none;
     display: flex;
@@ -63,35 +75,55 @@ nav {
     margin-left: 20px;
 }
 
+/* 基礎連結樣式 - 補上基礎設定 */
 nav a {
+    position: relative;
+    padding: 8px 15px;
+    margin: 0 5px;
     text-decoration: none;
-    color: white !important; /* 強制使用白色，避免被其他樣式干擾 */
+    /* 移除預設底線 */
+    color: white !important;
+    /* 確保預設是白色 */
     font-weight: bold;
-    padding: 5px 10px;
     transition: all 0.3s ease;
     display: inline-block;
 }
 
+/* 優雅的底線動畫 */
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 5px;
+    /* 稍微往上一點，不要貼死邊緣 */
+    left: 50%;
+    background-color: white;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* 換一個更有質感的動畫曲線 */
+    transform: translateX(-50%);
+}
+
+/* 懸停與啟動狀態的底線伸長 */
+nav a:hover::after,
+nav a.active::after {
+    width: 70%;
+    /* 不要 100% 滿，80% 或 70% 看起來更高級 */
+}
+
+/* 處理 Active 狀態 */
 nav a.active {
-    color: #ffdeeb !important; /* 讓文字顏色稍微亮一點 */
-    border-bottom: 2px solid white; /* 加入白色底線 */
-    padding-bottom: 5px; /* 讓底線跟文字有點距離 */
-    transition: all 0.3s ease;
-    opacity: 1; /* 確保是不透明的 */
+    border-bottom: none !important;
+    /* 確保舊樣式消失 */
+    color: white !important;
 }
 
-/* 確保滑鼠移上去時也有回饋，但不影響 active 樣式 */
+/* 懸停時的微交互 - 建議把背景色調淡 */
 nav a:hover {
-    color: #ffffff !important;
-    background-color: rgba(255, 255, 255, 0.2);
-    /* 加上淡淡的白色半透明背景 */
-    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    /* 調低一點 */
+    border-radius: 8px;
     opacity: 1;
-}
-
-/* 4. 如果是在 Active 狀態下 hover，維持底線 */
-nav a.active:hover {
-    background-color: rgba(255, 255, 255, 0.3);
 }
 
 /* 漢堡按鈕設定 */
@@ -214,7 +246,7 @@ blockquote {
         position: absolute;
         top: 100%;
         left: 0;
-        background-color: rgba(255, 193, 227, 0.95);
+        background-color: rgba(255, 193, 227, 0.98);
         padding: 10px 0;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     }
@@ -229,6 +261,7 @@ blockquote {
         /* 增加間距 */
         text-align: center;
     }
+
 
     nav {
         padding: 1rem 5%;
@@ -252,14 +285,117 @@ blockquote {
 
 /* 區塊樣式 */
 header {
-    height: 60vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://via.placeholder.com/1200x600') no-repeat center center/cover;
+    height: 85vh;
+    /* 稍微增加高度，更有張力 */
+    background:
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(255, 193, 227, 0.3)),
+        /* 加入粉色調漸層 */
+        url('your-sana-image.jpg') no-repeat center center/cover;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 主標題：加強層次感 */
+header h1 {
+    font-size: 5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    margin-bottom: 20px;
+    animation: fadeInUp 1.2s ease;
+    /* 入場動畫 */
+    text-shadow: 2px 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* 語錄盒升級：變成精緻的小卡片 */
+.quote-box {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 25px 40px;
+    border-radius: 50px;
+    /* 圓角膠囊型 */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    animation: floating 3s ease-in-out infinite;
+    /* 漂浮動畫 */
+}
+
+/* 語錄按鈕美化 */
+.quote-box button {
+    background: white;
+    color: #ff85c2;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.quote-box button:hover {
+    background: #ffc1e3;
     color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    transform: translateY(-3px);
+}
+
+/* 動態效果關鍵影格 */
+@keyframes floating {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scroll-down {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.scroll-down span {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-bottom: 2px solid white;
+    border-right: 2px solid white;
+    transform: rotate(45deg);
+    animation: arrow 2s infinite;
+}
+
+@keyframes arrow {
+    0% {
+        opacity: 0;
+        transform: rotate(45deg) translate(-20px, -20px);
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: rotate(45deg) translate(20px, 20px);
+    }
 }
 
 .reveal {

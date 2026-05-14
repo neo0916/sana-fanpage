@@ -157,6 +157,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
     }
 
+    window.addEventListener('scroll', () => {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 50) {
+            nav.style.padding = '0.5rem 8%'; // 縮小高度
+            nav.style.background = 'rgba(255, 193, 227, 0.95)'; // 顏色變實一點
+            nav.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)'; // 加入陰影
+        } else {
+            nav.style.padding = '0.8rem 8%'; // 恢復原狀
+            nav.style.background = 'rgba(255, 255, 255, 0.2)'; // 恢復玻璃感
+            nav.style.boxShadow = 'none';
+        }
+    });
+
     // 選擇性：使用者第一次點擊網頁任何地方時自動播放 (優化體驗)
     /*
     document.body.addEventListener('click', () => {
