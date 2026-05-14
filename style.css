@@ -208,14 +208,16 @@ nav a:hover {
 
 /* 在 HTML 加入一張 class="profile-img" 的圖片 */
 .profile-img {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 5px solid #ffdeeb;
-    margin: 0 auto 20px;
-    /* 置中且與下方保持距離 */
-    display: block;
-    object-fit: cover;
+    width: 160px !important;/* 強制固定寬度 */
+    height: 160px !important;/* 強制固定高度 */
+    min-width: 160px;/* 防止縮小 */
+    min-height: 160px;/* 防止縮小 */
+    border-radius: 50% !important;/* 確保一定是圓形 */
+    object-fit: cover !important;/* 確保圖片不變形 */
+    margin: 0 auto 25px !important;
+    display: block !important;
+    border: 6px solid #fff;
+    outline: 2px solid #ffdeeb;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
