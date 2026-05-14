@@ -86,6 +86,11 @@ nav a {
     transition: 0.4s;
 }
 
+.active-page {
+    border-bottom: 2px solid white;
+    color: #ffd1e8 !important;
+}
+
 /* --- 手機版響應式設計 --- */
 @media (max-width: 768px) {
     .menu-toggle {

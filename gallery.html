@@ -24,7 +24,7 @@
         <!-- 確保這裡有 nav-list 這個 class -->
         <ul class="nav-list">
             <li><a href="index.html">關於她</a></li>
-            <li><a href="gallery.html">圖片庫</a></li>
+            <li><a href="gallery.html" class="active-page">圖片庫</a></li>
             <li><a href="works.html">作品集</a></li>
         </ul>
     </nav>
@@ -39,30 +39,24 @@
         </div>
     </header>
 
-    <!-- 介紹區塊 -->
-    <section id="about" class="reveal">
-        <h2>關於 Sana</h2>
-        <p>湊崎紗夏（Minatozaki Sana），來自日本大阪。她是 TWICE 的成員之一，以甜美且充滿活力的形象著稱。</p>
-
-        <table class="sana-table">
-            <tr>
-                <th>本名</th>
-                <td>湊崎 紗夏 (Minatozaki Sana)</td>
-            </tr>
-            <tr>
-                <th>出生日期</th>
-                <td>1996年12月29日</td>
-            </tr>
-            <tr>
-                <th>出生地</th>
-                <td>日本大阪府大阪市天王寺區</td>
-            </tr>
-            <tr>
-                <th>代表色</th>
-                <td>紫色 (#9B70AD)</td>
-            </tr>
-        </table>
+    <!-- 圖片庫區塊 -->
+    <section id="gallery" class="reveal">
+        <h2>Sana 魅力相簿</h2>
+        <p>這裡收集了 Sana 各個時期的絕美瞬間。</p>
+        <div class="image-grid">
+            <img src="sana1.jpg" alt="Sana 舞台照" class="gallery-img">
+            <img src="sana2.jpg" alt="Sana 簽售照" class="gallery-img">
+            <img src="sana3.jpg" alt="Sana 雜誌照" class="gallery-img">
+            <img src="sana4.jpg" alt="Sana 日常" class="gallery-img">
+        </div>
     </section>
+
+    <!-- 燈箱彈窗 -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div id="caption"></div>
+    </div>
 
     <footer>
         <p>© 2026 Sana Fan Project</p>
