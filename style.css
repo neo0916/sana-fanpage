@@ -1,0 +1,254 @@
+/* 基本設定 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 隱藏預設滑鼠 */
+html,
+body {
+    cursor: none;
+}
+
+a,
+button,
+.gallery-img,
+.music-btn {
+    cursor: none;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fffafb;
+}
+
+.cursor-dot {
+    width: 20px;
+    height: 20px;
+    background-color: rgba(255, 193, 227, 0.6);
+    border: 2px solid #ffffff;
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    /* 修正：加上逗號 */
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out;
+}
+
+/* 導航欄樣式 */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 193, 227, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 1rem 5%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* 這裡是電腦版的選單 */
+.nav-list {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-list li {
+    margin-left: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+/* 漢堡按鈕設定 */
+.menu-toggle {
+    display: none;
+    /* 電腦版隱藏 */
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+    transition: 0.4s;
+}
+
+/* --- 手機版響應式設計 --- */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+        /* 手機版顯示 */
+    }
+
+    /* 修正：將原本橫排的選單改成隱藏的垂直選單 */
+    .nav-list {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: rgba(255, 193, 227, 0.95);
+        padding: 10px 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-list.active {
+        display: flex;
+        /* 點擊後顯示 */
+    }
+
+    .nav-list li {
+        margin: 15px 0;
+        /* 增加間距 */
+        text-align: center;
+    }
+
+    nav {
+        padding: 1rem 5%;
+        /* 修正：不可設為 100% */
+        position: relative;
+    }
+
+    /* 漢堡變 X 的動畫 */
+    .menu-toggle.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.is-active .bar:nth-child(1) {
+        transform: translateY(11px) rotate(45deg);
+    }
+
+    .menu-toggle.is-active .bar:nth-child(3) {
+        transform: translateY(-11px) rotate(-45deg);
+    }
+}
+
+/* 區塊樣式 */
+header {
+    height: 60vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://via.placeholder.com/1200x600') no-repeat center center/cover;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.reveal {
+    position: relative;
+    transform: translateY(50px);
+    opacity: 0;
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* 表格與圖片庫 (維持原樣) */
+.sana-table {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.sana-table th,
+.sana-table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ffe1f0;
+}
+
+.sana-table th {
+    background-color: #ffc1e3;
+    color: white;
+}
+
+.image-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+@media (max-width: 480px) {
+    .image-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.gallery-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.gallery-img:hover {
+    transform: scale(1.05);
+}
+
+/* 燈箱與音樂按鈕 (維持原樣) */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+}
+
+.music-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #ffc1e3;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+}
+
+.playing #music-icon {
+    animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+section {
+    padding: 50px 10%;
+}

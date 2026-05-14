@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sana - No Sana No Life</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="cursor-dot"></div>
+
+    <!-- 導航欄 -->
+    <nav>
+        <div class="logo">SANA FanPage</div>
+
+        <!-- 漢堡選單按鈕 -->
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <!-- 確保這裡有 nav-list 這個 class -->
+        <ul class="nav-list">
+            <li><a href="#about">關於她</a></li>
+            <li><a href="#gallery">圖片庫</a></li>
+            <li><a href="#works">作品集</a></li>
+        </ul>
+    </nav>
+
+    <!-- 首頁區塊 -->
+    <header id="home">
+        <h1>Minatozaki Sana</h1>
+        <!-- 建議把語錄盒移到首頁大圖這裡，視覺更平衡 -->
+        <div class="quote-box">
+            <p id="sana-quote">「No Sana, No Life.」</p>
+            <button onclick="getRandomQuote()">聽聽 Sana 說什麼</button>
+        </div>
+    </header>
+
+    <!-- 介紹區塊 -->
+    <section id="about" class="reveal">
+        <h2>關於 Sana</h2>
+        <p>湊崎紗夏（Minatozaki Sana），來自日本大阪。她是 TWICE 的成員之一，以甜美且充滿活力的形象著稱。</p>
+
+        <table class="sana-table">
+            <tr>
+                <th>本名</th>
+                <td>湊崎 紗夏 (Minatozaki Sana)</td>
+            </tr>
+            <tr>
+                <th>出生日期</th>
+                <td>1996年12月29日</td>
+            </tr>
+            <tr>
+                <th>出生地</th>
+                <td>日本大阪府大阪市天王寺區</td>
+            </tr>
+            <tr>
+                <th>代表色</th>
+                <td>紫色 (#9B70AD)</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- 圖片庫區塊 -->
+    <section id="gallery" class="reveal">
+        <h2>Sana 魅力相簿</h2>
+        <div class="image-grid">
+            <img src="sana1.jpg" alt="Sana 舞台照" class="gallery-img">
+            <img src="sana2.jpg" alt="Sana 簽售照" class="gallery-img">
+            <img src="sana3.jpg" alt="Sana 雜誌照" class="gallery-img">
+            <img src="sana4.jpg" alt="Sana 日常" class="gallery-img">
+        </div>
+    </section>
+
+    <!-- 燈箱彈窗 -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div id="caption"></div>
+    </div>
+
+    <!-- 作品集 -->
+    <section id="works" class="reveal">
+        <h2>代表作品</h2>
+        <ul>
+            <li>《Cheer Up》- 傳奇的 "Shy Shy Shy"</li>
+            <li>《Feel Special》</li>
+            <li>《MISAMO - Marshmallow》</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>© 2026 Sana Fan Project</p>
+    </footer>
+
+    <!-- 音頻部分 -->
+    <audio id="bgMusic" loop>
+        <source src="sana-song.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- 修正：修復引號錯誤 -->
+    <div id="music-control" class="music-btn">
+        <span id="music-icon">🎵</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
