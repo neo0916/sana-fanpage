@@ -35,7 +35,6 @@ body {
     z-index: 9999;
     /* 修正：加上逗號 */
     transform: translate(-50%, -50%);
-    transition: transform 0.1s ease-out;
 }
 
 /* 導航欄樣式 */
@@ -74,7 +73,7 @@ nav a {
 }
 
 nav a.active {
-    color: #ffdeeb; /* 讓文字顏色稍微亮一點 */
+    color: #ffdeeb !important; /* 讓文字顏色稍微亮一點 */
     border-bottom: 2px solid white; /* 加入白色底線 */
     padding-bottom: 5px; /* 讓底線跟文字有點距離 */
     transition: all 0.3s ease;

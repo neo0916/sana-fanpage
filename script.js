@@ -27,11 +27,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentLocation = location.href;
     const menuItems = document.querySelectorAll('.nav-list a');
 
-menuItems.forEach(item => {
-    if (item.href === currentLocation) {
-        item.classList.add('active');
-    }
-});
+    const dot = document.querySelector('.cursor-dot');
+    const links = document.querySelectorAll('a, button, .music-btn');
+    
+
+    links.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            dot.style.transform = 'translate(-50%, -50%) scale(1.5)';
+            dot.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+        });
+        link.addEventListener('mouseleave', () => {
+            dot.style.transform = 'translate(-50%, -50%) scale(1)';
+            dot.style.backgroundColor = 'rgba(255, 193, 227, 0.6)';
+        });
+    });
+
+    menuItems.forEach(item => {
+        if (item.href === currentLocation) {
+            item.classList.add('active');
+        }
+    });
 
     window.addEventListener('mousemove', (e) => {
         // 讓圓點跟著滑鼠坐標移動
