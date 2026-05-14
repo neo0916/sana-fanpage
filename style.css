@@ -115,36 +115,78 @@ nav a.active:hover {
     color: #ffd1e8 !important;
 }
 
-/* 時間軸樣式 */
+/* 時間軸主容器 */
 .timeline {
-    margin-top: 40px;
-    border-left: 3px solid #ffc1e3;
-    padding-left: 20px;
-}
-
-.timeline-item {
-    margin-bottom: 25px;
+    margin: 40px auto;
+    max-width: 800px;
+    /* 限制寬度，讓閱讀更舒服 */
     position: relative;
+    padding-left: 40px;
+    /* 增加左邊距給線條空間 */
+    text-align: left;
+    /* 確保文字靠左 */
 }
 
-/* 時間軸的小圓點 */
-.timeline-item::before {
+/* 垂直線條 */
+.timeline::before {
     content: '';
     position: absolute;
-    left: -28px;
-    top: 5px;
-    width: 12px;
-    height: 12px;
-    background-color: #ffc1e3;
+    left: 17px;
+    /* 線條位置 */
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: #ffc1e3;
+    border-radius: 3px;
+}
+
+/* 每個時間點項目 */
+.timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.5);
+    /* 淡淡的背景色 */
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+/* 滑鼠移入時項目變色 */
+.timeline-item:hover {
+    background: rgba(255, 193, 227, 0.2);
+    transform: translateX(10px);
+    /* 輕微右移特效 */
+}
+
+/* 時間軸上的小圓點 */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    left: -32px;
+    /* 這裡要根據 .timeline::before 的位置精準對齊 */
+    top: 20px;
+    width: 16px;
+    height: 16px;
+    background-color: #ff85c2;
+    border: 3px solid #fff;
     border-radius: 50%;
-    border: 2px solid white;
+    z-index: 2;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .year {
     font-weight: bold;
-    color: #ff85c2;
-    font-size: 1.1rem;
+    color: #ff4d94;
+    /* 讓年份顏色更深一點更顯眼 */
+    font-size: 1.2rem;
+    margin-bottom: 5px;
     display: block;
+}
+
+.timeline-item p {
+    margin: 0;
+    color: #555;
+    font-size: 0.95rem;
 }
 
 /* 引用塊樣式 */
@@ -305,17 +347,49 @@ header {
 }
 
 /* 燈箱與音樂按鈕 (維持原樣) */
+/* 燈箱背景 */
 .lightbox {
     display: none;
+    /* 預設隱藏 */
     position: fixed;
-    z-index: 2000;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
-    justify-content: center;
-    align-items: center;
+    /* 半透明黑背景 */
+    z-index: 10000;
+    /* 確保在最上層 */
+    cursor: zoom-out;
+    /* 滑鼠變成縮小圖示 */
+    backdrop-filter: blur(5px);
+    /* 背景模糊感，更高級 */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.active {
+    display: flex;
+        justify-content: center;
+        /* 水平置中 */
+        align-items: center;
+        /* 垂直置中 */
+        opacity: 1;
+}
+
+/* 燈箱內的圖片 */
+.lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(255, 193, 227, 0.5);
+    /* 給 Sana 的照片加一點粉色光暈 */
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.lightbox.active img {
+    transform: scale(1);
 }
 
 .music-btn {

@@ -82,10 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (imgs.length > 0 && lightbox && lightboxImg) {
         imgs.forEach(img => {
             img.addEventListener('click', () => {
-                lightbox.style.display = 'flex'; // 顯示彈窗
-                lightboxImg.src = img.src;      // 載入點擊的圖片
+                // 改用 classList，配合 CSS 的 transition 動畫
+                lightbox.classList.add('active');
+                lightboxImg.src = img.src;
 
-                // 只有在 caption 元素存在時才填入文字
                 if (captionText) {
                     captionText.innerText = img.alt;
                 }
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 點擊 X 關閉
     if (closeBtn) {
         closeBtn.addEventListener('click', () => {
-            lightbox.style.display = 'none';
+            lightbox.classList.remove('active'); // 移除 active 類別
         });
     }
 
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (lightbox) {
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) {
-                lightbox.style.display = 'none';
+                lightbox.classList.remove('active'); // 移除 active 類別
             }
         });
     }
@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    window,addEventListener('scroll', () => {
+    window.addEventListener('scroll', () => {
         const reveals = document.querySelectorAll('.reveal');
 
         reveals.forEach(windowReveal => {
