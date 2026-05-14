@@ -66,8 +66,33 @@ nav {
 
 nav a {
     text-decoration: none;
-    color: white;
+    color: white !important; /* 強制使用白色，避免被其他樣式干擾 */
     font-weight: bold;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+nav a.active {
+    color: #ffdeeb; /* 讓文字顏色稍微亮一點 */
+    border-bottom: 2px solid white; /* 加入白色底線 */
+    padding-bottom: 5px; /* 讓底線跟文字有點距離 */
+    transition: all 0.3s ease;
+    opacity: 1; /* 確保是不透明的 */
+}
+
+/* 確保滑鼠移上去時也有回饋，但不影響 active 樣式 */
+nav a:hover {
+    color: #ffffff !important;
+    background-color: rgba(255, 255, 255, 0.2);
+    /* 加上淡淡的白色半透明背景 */
+    border-radius: 5px;
+    opacity: 1;
+}
+
+/* 4. 如果是在 Active 狀態下 hover，維持底線 */
+nav a.active:hover {
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 /* 漢堡按鈕設定 */

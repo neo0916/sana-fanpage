@@ -23,7 +23,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 漢堡選單邏輯 ---
     const menu = document.querySelector('#mobile-menu');
     const menuLinks = document.querySelector('.nav-list');
+    // 自動偵測網址並高亮導航欄
+    const currentLocation = location.href;
+    const menuItems = document.querySelectorAll('.nav-list a');
 
+menuItems.forEach(item => {
+    if (item.href === currentLocation) {
+        item.classList.add('active');
+    }
+});
 
     window.addEventListener('mousemove', (e) => {
         // 讓圓點跟著滑鼠坐標移動
